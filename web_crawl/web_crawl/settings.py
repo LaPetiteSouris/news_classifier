@@ -13,3 +13,5 @@ SPIDER_MODULES = ['web_crawl.spiders']
 NEWSPIDER_MODULE = 'web_crawl.spiders'
 USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 
+FEED_FORMAT = 'jsonlines'
+FEED_URI = 'result.jl'

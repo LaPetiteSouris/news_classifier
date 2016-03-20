@@ -11,10 +11,12 @@ class MySpider(BaseSpider):
     def parse(self, response):
         items = []
         hxs = HtmlXPathSelector(response)
-        for sel in hxs.select('//div[@class="story"]'):
+        sites = hxs.select('//div[@class="story"]')
+        for sel in sites:
             item = WebCrawlItem()
-            item['content'] = sel.select('//p').extract()
-            item['title'] = sel.select('//h3').extract()
-            item['link'] = sel.select('//a/@href').extract()
+            item['title'] = sel.select('.//h3/a/text()').extract()
+            item['content'] = sel.select(
+                './/p[@class="summary"]/text()').extract()
+            item['link'] = sel.select('.//h3/a/@href').extract()
             items.append(item)
         return items
