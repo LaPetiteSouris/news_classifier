@@ -1,1 +1,3 @@
-{}
+{
+  "test.py::Test_Classifier::()::test_process_training_data": true
+}

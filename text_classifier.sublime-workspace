@@ -4,20 +4,60 @@
 		"selected_items":
 		[
 			[
+				"pr",
+				"process_training_data	function"
+			],
+			[
+				"load",
+				"load_json_feature_file	function"
+			],
+			[
+				"web",
+				"web_crawl〔module〕"
+			],
+			[
+				"class",
+				"classifier〔variable〕"
+			],
+			[
+				"cla",
+				"classifier_creation"
+			],
+			[
+				"sys",
+				"system	function"
+			],
+			[
+				"S",
+				"Spider"
+			],
+			[
+				"bay",
+				"bayesian_naive	module"
+			],
+			[
+				"clas",
+				"classifier	module"
+			],
+			[
+				"tra",
+				"training_count	statement"
+			],
+			[
+				"train",
+				"training_label"
+			],
+			[
+				"raw",
+				"raw_text	statement"
+			],
+			[
 				"fi",
 				"fit	function"
 			],
 			[
-				"cla",
-				"classifier	function"
-			],
-			[
 				"pro",
 				"process_raw_data	function"
-			],
-			[
-				"load",
-				"load_data_training	function"
 			],
 			[
 				"fit",
@@ -66,10 +106,6 @@
 			[
 				"Stoc",
 				"StockCluster	module"
-			],
-			[
-				"tra",
-				"transpose	function"
 			],
 			[
 				"vol",
@@ -190,10 +226,6 @@
 			[
 				"cls",
 				"cls_point_val	statement"
-			],
-			[
-				"pr",
-				"tomorrow_prediction"
 			],
 			[
 				"tmr",
@@ -416,10 +448,6 @@
 				"GPIO_PORTE_AHB_DEN_R"
 			],
 			[
-				"S",
-				"Stitle"
-			],
-			[
 				"brea",
 				"breaking	int"
 			],
@@ -486,52 +514,35 @@
 			[
 				"ca",
 				"calculate_fibonacci"
-			],
-			[
-				"chec",
-				"cheeck_year"
-			],
-			[
-				"cehc",
-				"check_positive_negative"
-			],
-			[
-				"Ex_",
-				"Ex1_calculate"
-			],
-			[
-				"ex",
-				"exercise_choice"
-			],
-			[
-				"tc",
-				"tcp_query_packet"
-			],
-			[
-				"ser",
-				"serialization"
-			],
-			[
-				"udp",
-				"udp_query_packet"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "data_crawling.py",
+			"file": "classifier/bayesian_naive.py",
 			"settings":
 			{
-				"buffer_size": 761,
+				"buffer_size": 1636,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "test_data/test/test_samples.txt",
+			"contents": "from classifier import bayesian_naive as bayes\n\n\nclass Test_Classifier:\n\n    def test_json_parsing(self):\n        data = bayes.load_json_feature_file('web_crawl/result.jl')\n        assert len(data) > 0\n\n    def test_process_training_data(self):\n        data = bayes.load_json_feature_file('web_crawl/result.jl')\n        labels = [1] * len(data)\n        bag_of_words, labels = bayes.process_training_data(data, labels)\n        assert bag_of_words.shape[0] == len(labels)\n\n    def test_load_classifier(self):\n    	bayes_classifier=bayes.load_classifier()\n    	assert b\n",
+			"file": "test.py",
+			"file_size": 553,
+			"file_write_time": 131030407803276816,
 			"settings":
 			{
-				"buffer_size": 4119,
+				"buffer_size": 567,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/tung/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+			"settings":
+			{
+				"buffer_size": 197,
 				"line_ending": "Unix"
 			}
 		}
@@ -597,10 +608,44 @@
 	},
 	"expanded_folders":
 	[
-		"/home/tung/Python_Project/text_classifier"
+		"/home/tung/Python_Project/text_classifier",
+		"/home/tung/Python_Project/text_classifier/classifier",
+		"/home/tung/Python_Project/text_classifier/web_crawl"
 	],
 	"file_history":
 	[
+		"/home/tung/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/tung/Python_Project/text_classifier/launch_crawling.py",
+		"/home/tung/Python_Project/text_classifier/training_module/__init__.py",
+		"/home/tung/Python_Project/text_classifier/training_module/bayes_naive_training.py",
+		"/home/tung/Python_Project/text_classifier/web_crawl/settings.py",
+		"/home/tung/Python_Project/text_classifier/web_crawl/web_crawl/spiders/spider.py",
+		"/home/tung/Python_Project/text_classifier/web_crawl/launch_crawling.py",
+		"/home/tung/Python_Project/text_classifier/abc.py",
+		"/home/tung/Python_Project/text_classifier/web_crawl/result.jl",
+		"/home/tung/Python_Project/text_classifier/web_crawl/__init__.py",
+		"/home/tung/Python_Project/text_classifier/web_crawl/abc.py",
+		"/home/tung/Python_Project/text_classifier/test_crawler.py",
+		"/home/tung/Python_Project/text_classifier/web_crawl/web_crawl/settings.py",
+		"/home/tung/Python_Project/text_classifier/web_crawl/web_crawl/items.py",
+		"/home/tung/Python_Project/text_classifier/web_crawl/web_crawl/pipelines.py",
+		"/home/tung/Python_Project/text_classifier/web_crawl/result.json",
+		"/home/tung/Python_Project/text_classifier/web_crawl/result.xml",
+		"/home/tung/Python_Project/text_classifier/web_crawl/result.jsonl",
+		"/home/tung/Python_Project/text_classifier/web_crawl/items.json",
+		"/home/tung/Python_Project/text_classifier/web_crawl/items.jl",
+		"/home/tung/Python_Project/text_classifier/web_crawl/items.xml",
+		"/home/tung/Python_Project/text_classifier/web_crawl/items.csv",
+		"/home/tung/Python_Project/text_classifier/test.py",
+		"/home/tung/Python_Project/text_classifier/classifier/bayesian_naive.py",
+		"/home/tung/Python_Project/text_classifier/crawler/crawler/items.py",
+		"/home/tung/Python_Project/text_classifier/crawler/crawler/pipelines.py",
+		"/home/tung/Python_Project/text_classifier/crawler/scrapy.cfg",
+		"/home/tung/Python_Project/text_classifier/crawler/crawler/settings.py",
+		"/home/tung/Python_Project/text_classifier/crawler/crawler/spiders/spider.py",
+		"/home/tung/Python_Project/text_classifier/data_crawling.py",
+		"/home/tung/Python_Project/text_classifier/classifier/__init__.py",
+		"/home/tung/Python_Project/text_classifier/test_data/test/test_samples.txt",
 		"/home/tung/Python_Project/text_classifier/README.md",
 		"/home/tung/Python_Project/text_classifier/train_data/animals/test_samples.text",
 		"/home/tung/Python_Project/text_classifier/test_data.txt",
@@ -635,7 +680,6 @@
 		"/home/tung/Python_Project/knn_stock/src/knn.py",
 		"/home/tung/Python_Project/knn_stock/src/plot_result.py",
 		"/home/tung/Python_Project/knn_stock/src/fetch_data.py",
-		"/home/tung/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
 		"/home/tung/.config/sublime-text-3/Packages/Default/Default (Linux).sublime-keymap",
 		"/home/tung/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/tung/Python_Project/knn_stock/results",
@@ -697,42 +741,11 @@
 		"/home/tung/Python_Project/Intelligence_Collective/decouvrir_groupe/blogdata.txt",
 		"/home/tung/Python_Project/Intelligence_Collective/decouvrir_groupe/Dockerfile",
 		"/home/tung/Python_Project/Intelligence_Collective/decouvrir_groupe/readfile.py",
-		"/home/tung/Python_Project/PythonSocket/Dockerfile",
-		"/home/tung/Desktop/hithere/setup.py",
-		"/home/tung/PycharmProjects/exercice-python/dataproc/modellingdata.py",
-		"/home/tung/Python_Project/ARMA-stock-index-predict/Dockerfile",
-		"/home/tung/PycharmProjects/exercice-python/dev-requirements.txt",
-		"/home/tung/PycharmProjects/PythonSocket/bin/TCPServer.py",
-		"/home/tung/PycharmProjects/exercice-python/recsys/algorithm/baseclass.py",
-		"/home/tung/PycharmProjects/exercice-python/recsys/algorithm/factorize.py",
-		"/home/tung/PycharmProjects/exercice-python/recsys/datamodel/data.py",
-		"/home/tung/PycharmProjects/exercice-python/recsys/datamodel/data",
-		"/home/tung/PycharmProjects/exercice-python/recsys/evaluation/decision.py",
-		"/home/tung/PycharmProjects/exercice-python/recsys/evaluation/decision",
-		"/home/tung/Desktop/TP/MIC/EXAM/sensors",
-		"/home/tung/Desktop/TP/MIC/EXAM/pwm",
-		"/home/tung/Code/C/SocketC/src/server/tcpserver.h",
-		"/home/tung/Code/C/SocketC/src/logfile",
-		"/home/tung/Code/C/SocketC/src/serialization/udp_query_packet.h",
-		"/home/tung/Code/C/SocketC/src/serialization/tcp_query_packet.h",
-		"/home/tung/Code/C/SocketC/src/server/tcpserver.c",
-		"/home/tung/Desktop/sock/server.c",
-		"/home/tung/Desktop/sock.c",
-		"/home/tung/Desktop/read.c",
-		"/home/tung/Desktop/TP/MIC/TP3/ex3.c",
-		"/home/tung/Desktop/ex4.c",
-		"/home/tung/Code/C/SocketC/src/client/tcpclient.c",
-		"/home/tung/Code/C/SocketC/src/client/udpclient.c",
-		"/home/tung/Code/C/SocketC/src/server/udpserver.h",
-		"/home/tung/Code/C/SocketC/src/server/udpserver.c",
-		"/home/tung/Code/C/SocketC/src/Makefile",
-		"/home/tung/Code/C/SocketC/src/server/log.h",
-		"/home/tung/Code/C/SocketC/src/server/log.c",
-		"/usr/include/x86_64-linux-gnu/sys/socket.h"
+		"/home/tung/Python_Project/PythonSocket/Dockerfile"
 	],
 	"find":
 	{
-		"height": 38.0
+		"height": 31.0
 	},
 	"find_in_files":
 	{
@@ -750,6 +763,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"    	",
+			"content",
+			"link",
+			"href",
+			"content",
+			"title",
 			"tfidf_transformer",
 			"sci",
 			"import",
@@ -888,24 +907,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "data_crawling.py",
+					"file": "classifier/bayesian_naive.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 761,
+						"buffer_size": 1636,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								403,
-								403
+								1430,
+								1430
 							]
 						],
 						"settings":
@@ -919,11 +938,101 @@
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content"
+							],
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 786.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "test.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 567,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								566,
+								566
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_complete": false,
+							"bh_regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -934,6 +1043,11 @@
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -959,16 +1073,11 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
 							],
 							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
@@ -980,20 +1089,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "test_data/test/test_samples.txt",
+					"buffer": 2,
+					"file": "/home/tung/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4119,
+						"buffer_size": 197,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4119,
-								4119
+								196,
+								196
 							]
 						],
 						"settings":
@@ -1001,21 +1110,11 @@
 							"BracketHighlighterBusy": false,
 							"bh_regions":
 							[
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1026,41 +1125,51 @@
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
 								"bh_square",
 								"bh_square_center",
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
 							],
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 633.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1071,7 +1180,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 31.0
 	},
 	"input":
 	{
@@ -1110,7 +1219,7 @@
 	},
 	"output.exec":
 	{
-		"height": 232.0
+		"height": 149.0
 	},
 	"output.find_results":
 	{
@@ -1120,7 +1229,7 @@
 	"project": "text_classifier.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 58.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -1,12 +1,17 @@
-from classifier import data_crawling as crawler
+from classifier import bayesian_naive as bayes
 
 
 class Test_Classifier:
 
-    def test_data_loading(self):
-        bag_of_words_training, training_label = crawler.load_training_data()
-        assert bag_of_words_training.shape[0] == len(training_label)
+    def test_json_parsing(self):
+        data = bayes.load_json_feature_file('web_crawl/result.jl')
+        assert len(data) > 0
 
-    def test_bayesian_classifier(self):
-        bayes = crawler.classifier()
-        assert bayes.predict(crawler.load_test_data()) == 'animals'
+    def test_process_training_data(self):
+        data = bayes.load_json_feature_file('web_crawl/result.jl')
+        labels = [1] * len(data)
+        bag_of_words, labels = bayes.process_training_data(data, labels)
+        assert bag_of_words.shape[0] == len(labels)
+
+    def test_load_classifier(self):
+    	bayes_classifier=bayes.load_classifier()

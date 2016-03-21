@@ -14,4 +14,4 @@ NEWSPIDER_MODULE = 'web_crawl.spiders'
 USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 
 FEED_FORMAT = 'jsonlines'
-FEED_URI = 'result.jl'
+FEED_URI = 'web_crawl/result.jl'
