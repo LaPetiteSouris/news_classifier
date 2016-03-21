@@ -14,4 +14,5 @@ class Test_Classifier:
         assert bag_of_words.shape[0] == len(labels)
 
     def test_load_classifier(self):
-    	bayes_classifier=bayes.load_classifier()
+        bayes_classifier = bayes.load_classifier()
+        assert bayes_classifier is not None
