@@ -49,4 +49,7 @@ def load_classifier():
     except IOError:
         print 'Bayesian classifier object not found. Will create now'
         classifier = NaiveBayes()
+        bag_of_word, label = process_training_data(
+            ["Positive", "Negative"], [1, 0])
+        classifier.fit(bag_of_word, label)
     return classifier

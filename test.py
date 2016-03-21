@@ -16,3 +16,9 @@ class Test_Classifier:
     def test_load_classifier(self):
         bayes_classifier = bayes.load_classifier()
         assert bayes_classifier is not None
+
+    def test_prediction(self):
+        bayes_classifier = bayes.load_classifier()
+        prediction = bayes_classifier.predict(
+            bayes.process_test_data(["test"]))
+        assert prediction in [0, 1]
