@@ -30,6 +30,16 @@ def load_json_feature_file(web_json_file):
     return data
 
 
+def dipslay_prediction_result(web_json_file, result_list):
+    for index, line in enumerate(web_json_file):
+
+        if index in result_list:
+            parsed_json = json.loads(line)
+            print parsed_json['title']
+            print parsed_json['content']
+            print parsed_json['link']
+
+
 def training_data_process(raw_feature_vector, training_label):
     """ Process from raw data to bag-of-words data, for reference
     http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html
