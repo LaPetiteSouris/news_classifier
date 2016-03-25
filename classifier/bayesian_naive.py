@@ -3,7 +3,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB as NaiveBayes
 import json
 import pickle
-
+import zipfile
 
 count_vect = CountVectorizer()
 tfidf_transformer = TfidfTransformer()
@@ -19,15 +19,14 @@ def load_json_feature_file(web_json_file):
         data: list, where each member contains pure text of the article
     """
     data = []
-    with open(web_json_file) as f:
-        for line in f:
-            parsed_json = json.loads(line)
-            title = ''.join(''.join(element)
-                            for element in parsed_json['title'])
-            content = ''.join(''.join(element)
-                              for element in parsed_json['content'])
-            text = ''.join([title, content])
-            data.append(text)
+    for line in web_json_file:
+        parsed_json = json.loads(line)
+        title = ''.join(''.join(element)
+                        for element in parsed_json['title'])
+        content = ''.join(''.join(element)
+                          for element in parsed_json['content'])
+        text = ''.join([title, content])
+        data.append(text)
     return data
 
 
@@ -64,8 +63,11 @@ def test_data_process(raw_feature_test_vector):
 def load_training_data():
     data = []
     label = []
-    data_pos = load_json_feature_file("data/pos.jl")
-    data_neg = load_json_feature_file("data/neg.jl")
+    zip_f = zipfile.ZipFile('data/data.zip', 'r')
+    file_pos = zip_f.open('pos.jl')
+    file_neg = zip_f.open('neg.jl')
+    data_pos = load_json_feature_file(file_pos)
+    data_neg = load_json_feature_file(file_neg)
     label_pos = [1] * len(data_pos)
     label_neg = [0] * len(data_neg)
     data.extend(data_pos)
@@ -105,6 +107,5 @@ def load_classifier():
         data, label = load_training_data()
         bag_of_word, label = training_data_process(
             data, label)
-        print label
         classifier.fit(bag_of_word, label)
     return classifier

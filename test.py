@@ -6,13 +6,15 @@ os.chdir(".")
 class Test_Classifier:
 
     def test_json_parsing(self):
-        data = bayes.load_json_feature_file('data/pos.jl')
+        with open('data/pytest_data.jl') as file:
+            data = bayes.load_json_feature_file(file)
         assert len(data) > 0
 
     def test_process_training_data(self):
-        data = bayes.load_json_feature_file('data/pos.jl')
+        with open('data/pytest_data.jl') as file:
+            data = bayes.load_json_feature_file(file)
         labels = [1] * len(data)
-        bag_of_words, labels = bayes.process_training_data(data, labels)
+        bag_of_words, labels = bayes.training_data_process(data, labels)
         assert bag_of_words.shape[0] == len(labels)
 
     def test_load_classifier(self):
@@ -22,5 +24,5 @@ class Test_Classifier:
     def test_prediction(self):
         bayes_classifier = bayes.load_classifier()
         prediction = bayes_classifier.predict(
-            bayes.process_test_data(["test"]))
+            bayes.test_data_process(["test"]))
         assert prediction in [0, 1]
