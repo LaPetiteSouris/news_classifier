@@ -31,7 +31,7 @@ def load_json_feature_file(web_json_file):
     return data
 
 
-def process_training_data(raw_feature_vector, training_label):
+def training_data_process(raw_feature_vector, training_label):
     """ Process from raw data to bag-of-words data, for reference
     http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html
     http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html
@@ -47,7 +47,7 @@ def process_training_data(raw_feature_vector, training_label):
     return bag_of_words_training, training_label
 
 
-def process_test_data(raw_feature_test_vector):
+def test_data_process(raw_feature_test_vector):
     """ Process from raw test data to bag-of-words data, for reference
     http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html
     http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html
@@ -59,6 +59,20 @@ def process_test_data(raw_feature_test_vector):
     test_count = count_vect.transform(raw_feature_test_vector)
     bag_of_word_test = tfidf_transformer.transform(test_count)
     return bag_of_word_test
+
+
+def load_training_data():
+    data = []
+    label = []
+    data_pos = load_json_feature_file("data/pos.jl")
+    data_neg = load_json_feature_file("data/neg.jl")
+    label_pos = [1] * len(data_pos)
+    label_neg = [0] * len(data_neg)
+    data.extend(data_pos)
+    data.extend(data_neg)
+    label.extend(label_pos)
+    label.extend(label_neg)
+    return data, label
 
 
 def save_classifier(classifier):
@@ -88,7 +102,9 @@ def load_classifier():
     except IOError:
         print 'Bayesian classifier object not found. Will create now'
         classifier = NaiveBayes()
-        bag_of_word, label = process_training_data(
-            ["Positive", "Negative"], [1, 0])
-        classifier.partial_fit(bag_of_word, label, label)
+        data, label = load_training_data()
+        bag_of_word, label = training_data_process(
+            data, label)
+        print label
+        classifier.fit(bag_of_word, label)
     return classifier
