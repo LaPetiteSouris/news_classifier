@@ -12,7 +12,7 @@ tfidf_transformer = TfidfTransformer()
 def load_json_feature_file(web_json_file):
     """ This function load the JSONline file and parse
     all the text to a list, each member content the text of
-    an article
+    an article.
     Args:
         Jsonfile: path to jsonelines file
     Return:
@@ -31,13 +31,27 @@ def load_json_feature_file(web_json_file):
 
 
 def dipslay_prediction_result(web_json_file, result_list):
+    ''' This function display recommended news article to
+    users
+    Args:
+        web_json_file: cralwed jsonlines document
+        result_list: prediction list, contain index
+        (line number in web_json_file)
+        of positive article
+    Returns:
+        None
+    '''
     for index, line in enumerate(web_json_file):
-
         if index in result_list:
-            parsed_json = json.loads(line)
-            print parsed_json['title']
-            print parsed_json['content']
-            print parsed_json['link']
+            try:
+                parsed_json = json.loads(line)
+                title = parsed_json['title'][0]
+                content = parsed_json['content'][0]
+                url = parsed_json['link'][0]
+                print "Title: %s\nContent: %s\nUrl: %s\n" % (title,
+                                                             content, url)
+            except IndexError:
+                pass
 
 
 def training_data_process(raw_feature_vector, training_label):
@@ -71,8 +85,13 @@ def test_data_process(raw_feature_test_vector):
 
 
 def load_training_data():
+    ''' This function load training data set, which located in a zip file
+    Args: None
+    Returns: None
+    '''
     data = []
     label = []
+    # Load positive result and negative result from zip file
     zip_f = zipfile.ZipFile('data/data.zip', 'r')
     file_pos = zip_f.open('pos.jl')
     file_neg = zip_f.open('neg.jl')
@@ -80,6 +99,7 @@ def load_training_data():
     data_neg = load_json_feature_file(file_neg)
     label_pos = [1] * len(data_pos)
     label_neg = [0] * len(data_neg)
+    # Construct a training data list and its label
     data.extend(data_pos)
     data.extend(data_neg)
     label.extend(label_pos)
@@ -113,7 +133,7 @@ def load_classifier():
         f.close()
     except IOError:
         print 'Bayesian classifier object not found. Will create now'
-        classifier = NaiveBayes()
+        classifier = NaiveBayes(alpha=0.01)
         data, label = load_training_data()
         bag_of_word, label = training_data_process(
             data, label)

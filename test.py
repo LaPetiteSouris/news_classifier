@@ -1,5 +1,6 @@
 from classifier import bayesian_naive as bayes
 import os
+
 os.chdir(".")
 
 
@@ -26,3 +27,17 @@ class Test_Classifier:
         prediction = bayes_classifier.predict(
             bayes.test_data_process(["test"]))
         assert prediction in [0, 1]
+
+    def test_load_training_data(self):
+        data, label = bayes.load_training_data()
+        assert len(data) == len(label)
+
+    def test_dipslay_prediction_result(self, capfd):
+        result = [0, 1]
+        with open("data/pytest_data.jl") as file:
+            bayes.dipslay_prediction_result(file, result)
+            out, err = capfd.readouterr()
+            str = "The United Nations tribunal"
+            assert str in out
+            str = "President Obama met with the President Mauricio Macri"
+            assert str in out

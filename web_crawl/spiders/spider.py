@@ -1,9 +1,9 @@
-from scrapy.spider import BaseSpider
+import scrapy
 from web_crawl.items import WebCrawlItem
 from scrapy.selector import HtmlXPathSelector
 
 
-class MySpider(BaseSpider):
+class NYTimesSpider(scrapy.Spider):
     name = "article"
     start_urls = [
         "http://www.nytimes.com/pages/world/index.html?action=click&pgtype=Homepage&region=TopBar&module=HPMiniNav&contentCollection=World&WT.nav=page"]
