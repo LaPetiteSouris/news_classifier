@@ -6,7 +6,7 @@ It parses International news headlines from New York Times and filter news those
 
 A training data set is stored in a zip file in *data/data.zip*. To update training data set, please update the files here <br/>
 #Required <br/>
-Docker
+virtualenv 
 <br/>
 
 # Training data set <br/>
@@ -18,16 +18,9 @@ Should be stored in *data/data.zip*. There are 2 files <br/>
 
 # How to set up <br/>
 
-1. Pull docker image *dataquestio/python2-starter*, which contains a pre-configured environment image for data processing (including scrapy, numpy, scipy, sklearn....etc) <br/>
-
-2. Run Jupyter local server *docker run -d -p 8888:8888 -v /home/foo/dir:/home/ds/notebooks dataquestio/python2-starter* with */home/foo/dir* is the project root dir. It will loads source code onto the jupyter local server at *localhost:8888* <br/>
-
-3. Launch docker terminal of the container  *docker exec -it CONTAINER_ID /bin/bash*, with CONTAINER_ID is the container id of the image being run . You should get this return after the previous command.<br/>
-
-4. In the new terminal, install *pip install -U pytest* to install pytest in your container <br/>
-
-5. Launch localhost:8888 with your web browser, then a Jupyter interface is presented. Execute *launch_crawling.py* to get recommended New York Times articles <br/>
-
+1. Create and launch  your virtual evn <br/>
+2. In your virtual env, run   *pip install requirements.txt*  to set up dependencies correctly
+3. Launch *python launch_crawling.py* from your env to get news feeds
 # Pytest <br/>
 
-In Jupyter terminal, launch *test.py -v py.test*
+In your env terminal, launch *test.py -v py.test*
